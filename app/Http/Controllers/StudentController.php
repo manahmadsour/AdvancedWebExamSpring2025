@@ -35,7 +35,17 @@ class StudentController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $('#search').on('keyup', function() {
+    let query = $(this).val();
+    $.ajax({
+        url: '/recipes/search',
+        type: 'GET',
+        data: { query: query },
+        success: function(data) {
+            $('#recipeResults').html(data); // Update results dynamically
+        }
+    });
+});
     }
 
     /**
